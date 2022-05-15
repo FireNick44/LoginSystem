@@ -1,0 +1,434 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.6rem;
+    background-color: #000000;
+    color: #fff;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    transition: ease-out 200ms;
+}
+
+.body-light{
+    color: black !important;
+    transition: ease-out 200ms;
+}
+
+a{
+    color: #1e7a8a;
+}
+
+a:active{
+    color: #fd0101;
+}
+
+.disappear {
+    animation: vanish 1s forwards;
+}
+
+.disappearNull{
+    display: none !important;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0);
+    height: calc(100% - 8px);
+    width: calc(100% - 8px);
+    border: solid;
+    border-color: #ffffff;
+    border-width: 4px;
+}
+
+.content {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+.appear {
+    display: block;
+}
+
+@keyframes vanish {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.x {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: calc(100%-60px);
+}
+
+.x #logo path:first-child {
+    stroke-width: 1;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: line-anim 2s ease .2s forwards
+}
+
+.x svg {
+    animation: fill .6s ease-in 2s forwards
+}
+
+@keyframes line-anim {
+    to {
+        stroke-dashoffset: 0
+    }
+}
+
+@keyframes fill {
+    0% {
+        fill: transparent
+    }
+
+    to {
+        fill: #ffffff
+    }
+}
+
+.background {
+    background: linear-gradient(235deg, #FFFFFF 0%, #000F25 100%),
+        linear-gradient(180deg, #6100FF 0%, #000000 100%),
+        linear-gradient(235deg, #a3e2ff 0%, #a3b8ff 40%, #00043C calc(40% + 1px), #00043C 60%, #005D6C calc(60% + 1px), #005D6C 70%, #0089c9 calc(70% + 1px), #00C9B1 100%),
+        linear-gradient(125deg, #b1a3ff 0%, #2c2fee 40%, #00043C calc(40% + 1px), #00043C 60%, #005D6C calc(60% + 1px), #005D6C 70%, #0089c9 calc(70% + 1px), #00C9B1 100%);
+    background-blend-mode: soft-light, screen, darken, normal;
+    transition: ease-out 200ms;
+}
+
+.background-light{
+    background: linear-gradient(235deg, #FFFFFF 0%, #000F25 100%),
+        linear-gradient(180deg, #9f79db 0%, #252525 100%),
+        linear-gradient(235deg, #a3e2ff 0%, #a3b8ff 40%, #283099 calc(40% + 1px), #407daf 60%, #4cacbb calc(60% + 1px), #6fa3ac 70%, #3aa0cf calc(70% + 1px), #33c9b7 100%),
+        linear-gradient(125deg, #b1a3ff 0%, #6e83c7 40%, #373fab calc(40% + 1px), #2d6796 60%, #4cacbb calc(60% + 1px), #6fa3ac 70%, #3aa0cf calc(70% + 1px), #33c9b7 100%);
+    background-blend-mode: soft-light, screen, darken, normal;
+    transition: ease-out 200ms;
+}
+
+.centerX {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 50px);
+    width: 100%;
+}
+
+.centerX.user {
+    height: 100%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spacebtw{
+    display: flex;
+    justify-content: space-between;
+}
+
+.left{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.down{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-content: flex-end;
+    height: 100%;
+}
+
+.card {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(11, 21, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    display: flex;
+    flex-direction: column;
+    transition: ease-out 100ms;
+    color: white;
+}
+
+
+.card.cardpw{
+    width: 380px;
+    padding: 40px 16px 40px 16px;
+}
+
+.card.index{
+    width: 400px;
+    height: 350px;
+}
+.card.usercard{
+    padding: 25px;
+    max-width: 1600px;
+    height: calc(90% - 30px);
+    width: calc(90% - 30px);
+}
+
+.card.cardmode{
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+.card-light {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.555);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: ease-out 100ms;
+    color: black;
+}
+
+input:hover {
+    border: 1px solid #2ea44f;
+    transition: .3s all;
+}
+
+input:focus {
+    border: 1px solid #21793a;
+    outline: none;
+    transition: .3s all;
+}
+
+.submit {
+    background-color: #2ea44f;
+    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.15), hsla(0, 0%, 100%, 0));
+    border: 1px solid transparent;
+    border-radius: 4px;
+    border-color: #2ea44f;
+    box-shadow: 0 1px 1px rgba(18, 21, 26, .075);
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Inconsolata';
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.5rem;
+    margin-bottom: 8px;
+    padding: 9px 16px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    transition: .3s all;
+}
+
+.submit.logout{
+    border-color: #de2623;
+    background-color: #d43333;
+    width: 200px;
+}
+
+.submit:hover {
+    background-color: #289045;
+    border-color: #289045;
+    transition: .3s all;
+}
+
+.submit.logout:hover {
+    border-color: #dc1a16;
+    background-color: #b32121;
+}
+
+
+.username,
+.mail,
+.pw-rep,
+.pw {
+    appearance: none;
+    background-clip: padding-box;
+    background-color: #202935;
+    border: 1px solid #474747;
+    border-radius: 4px;
+    color: #ffffff;
+    display: block;
+    font-family: 'Inconsolata';
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    padding: 9px 34px 9px 16px;
+    width: calc(100% - 52px);
+    transition: ease-out 100ms;
+}
+
+.username-light,
+.mail-light,
+.pw-rep-light,
+.pw-light {
+    background-color: white !important;
+    color: black !important;
+    transition: ease-out 100ms;
+}
+
+.icon{
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    right: 0px;
+}
+
+.iconup{
+    position: absolute;
+    height: 28px;
+    width: 28px;
+}
+
+.icon.mail{
+    top: 239px;
+}
+
+.icon.pw{
+    top: 325px;
+}
+
+.icon.userup{
+    top: 238px;
+    right: 20px;
+}
+
+.icon.mailup{
+    top: 325px;
+    right: 20px;
+}
+
+.icon.pwup{
+    top: 413px;
+    right: 20px;
+}
+
+.icon.pwreup{
+    top: 499px;
+    right: 20px;
+}
+
+.mail-icon {
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    right: 20px;
+    top: 239px;
+}
+
+.pw-icon {
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    right: 20px;
+    top: 325px;
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0px 5px 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #474747;
+}
+
+.title.user{
+    justify-content: flex-start;
+}
+
+.title-logo {
+    height: 80px;
+    width: 80px;
+    border-radius: 80px;
+}
+
+label {
+    display: block;
+    font-size: 16.5px;
+    margin-left: 5px;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.section {
+    margin-top: 25px;
+}
+
+.section-next {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    width: 70%;
+}
+
+.navlink {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 10px;
+    transition: ease-out 300ms;
+}
+
+.navlink.lnk1{
+    color: white;
+}
+
+.navlink.lnk2{
+    color: white;
+}
+
+.navlink.lnk-light{
+    color: black !important;
+}
+
+.mode-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    top: 0;
+    transition: all 320ms ease-out 50ms;
+}
+
+.mode-icon{
+    display: block;
+    width: 3.2rem;
+    margin: 0.4rem;
+}
+
+.open .mode-body{
+    transform: translateY(-32px);
+}
+
+

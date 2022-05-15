@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./../public/style.css">
+    <link rel="shortcut icon" href="./../public/ico/icon.png">
+    <title>Sign In</title>
+</head>
+
+<body>
+    <div class="loader">
+        <div class="x">
+            <svg id="logo" xmlns="http://www.w3.org/2000/svg" width="400" height="320" viewBox="0 0 60 80">
+                <g>
+                    <path
+                        d="M 14.2 62.3 L 0 62.3 L 15.8 30.5 L 0.2 0 L 14.4 0 L 23.2 18.4 L 31.7 0 L 45.3 0 L 30.8 30.4 L 47.3 62.3 L 32.7 62.3 L 23.3 42.9 L 14.2 62.3 Z"
+                        transform="translate(5 10)" stroke="#ffffff" stroke-width="0" stroke-linejoin="round" />
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <main class="content background">
+
+        <nav class="navigation">
+            <div>
+                <a href="sign-in.html" class="navlink lnk1">Sign In</a>
+                <a href="sign-up.html" class="navlink lnk2">Sign Up</a>
+            </div>
+            <div>
+                <div class="card cardmode open" onclick="onModemenuKlick()">
+                    <div class="mode-body">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="mode-icon">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="mode-icon">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="centerX">
+            <div class="card cardpw">
+                <form action="#">
+                    <div class="center">
+                        <div class="title-logo background"></div>
+                    </div>
+                    <div class="center">
+                        <h1 class="title">Sign In</h1>
+                    </div>
+                    
+                    <div class="section">
+                        <label>Your Email</label>
+                        <input type="email" class="mail" placeholder="example@company.com" id="mail">
+                        <div class="mail-icon">
+                            <span>
+                                <svg class="icon" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-next">
+                            <label>Your Password</label>
+                            <!--
+                                <a href="#" class="link">Forgot password?</a> 
+                                There was an idea but its also good without it :)
+                            -->
+                        </div>
+                        <input type="password" class="pw" placeholder="password" id="pw">
+
+                        <div class="pw-icon">
+                            <span>
+                                <svg class="icon" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                        clip-rule="evenodd">
+                                    </path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <button type="submit" class="submit">Sign In</button>
+                    </div>
+
+                </form>
+
+                <div class="section-next">
+                    <label>Not registered?</label>
+                    <a href="sign-up.html" class="link">Create account</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script src="./../public/script.js" charset="utf-8"></script>
+</body>
+
+</html>
