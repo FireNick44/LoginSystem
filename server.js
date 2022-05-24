@@ -57,13 +57,27 @@ app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, re
 
 app.post('/login', (req, res)=> {
     console.log(req.body);
-    var username = req.body.username;
-    var password = req.body.password;
-    console.log(username);
+
+    let mail = req.body.mail;
+    let password = req.body.password;
+
+    console.log(mail);
+    console.log(password);
+
+    //check -> MongoDB user
+
+    //MongoDB ->
+
 })
 
 app.post('/register', (req, res)=> {
     console.log(req.body);
+
+    //check -> MongoDB user
+
+    //Hash
+
+    //MongoDB
 })
 
 
@@ -71,7 +85,3 @@ app.post('/register', (req, res)=> {
 app.use((req, res) => {
     res.sendFile('/views/error.html', { root: __dirname});
 })
-
-
-
-//index.addEventListener("submit")
