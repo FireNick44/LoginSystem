@@ -4,7 +4,6 @@ const app = express();
 
 var mongodb = require('./mongodb', { root: __dirname}); //connection db
 
-
 // listen on 8000 port (http://localhost:8000/)
 app.listen(8000);
 
@@ -53,7 +52,7 @@ app.get('/sign-up', (req, res) => {
 app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, res) => {
     res.sendFile('/views/user.html', { root: __dirname});
 })
-
+3
 
 app.post('/login', (req, res)=> {
     var mail = req.body.mail;
