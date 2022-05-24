@@ -25,7 +25,7 @@ npm install mongodb
 ```
 
 
-Now you can run the project:
+## Running the Project
 
 ```
 npm start logsys
