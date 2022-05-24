@@ -11,7 +11,10 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 try {
     // Connect to the MongoDB cluster
     client.connect();
-        
+    
+    client.db("Login").collection("UsersInfo").insertOne({username: username, email: email, password: password});
+
+    /*
     createListing(client,
         {
             username: username,
@@ -19,6 +22,7 @@ try {
             password: password
         }
         );
+    */
 } 
     
 catch (e) {
@@ -29,7 +33,8 @@ finally {
     client.close();
 }
 
-
+/*
 function createListing(client, newListing){
     const result = client.db("Login").collection("UsersInfo").insertOne(newListing);
 }
+*/
