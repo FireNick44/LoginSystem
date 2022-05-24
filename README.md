@@ -32,7 +32,7 @@ npm install mongodb
 ## Running the Project
 
 ```
-npm start logsys
+npm start
 ```
 
 or

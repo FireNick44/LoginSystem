@@ -2,9 +2,9 @@
   "name": "loginsystem",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "nodemon server.js",
   "scripts": {
-    "logsys": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
