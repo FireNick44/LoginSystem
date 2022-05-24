@@ -6,7 +6,7 @@ function main()
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
     client.connect(err => {
-        const collection = client.db("ipt6").collection("Login.UsersInfo");
+        const collection = client.db("Login").collection("UsersInfo");
         // perform actions on the collection object
         client.close();
     });
