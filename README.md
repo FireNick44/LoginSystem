@@ -2,7 +2,7 @@
 
 Complete LoginSystem with the UI from LoginFrontend
 
-## Installation &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _//just for you tim <3_
+## Installation &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 Clone or download the project, open the project in visual studio code and start a new terminal. Due to storage and privacy reasons there are no node-modules. Therefore, you need to install the following modules manually:
 
