@@ -41,5 +41,5 @@ connection();
 
 
 async function writeinDatabase(client, Liste){
-    client.db("Login").collection("UsersInfo").insertOne(Liste);
+    await client.db("Login").collection("UsersInfo").insertOne(Liste);
 }
