@@ -18,6 +18,13 @@ Install Express:
 npm install express
 ```
 
+Install MongoDB:
+
+```
+npm install mongodb
+```
+
+
 Now you can run the project:
 
 ```
