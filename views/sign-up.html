@@ -62,7 +62,7 @@
 
         <div class="centerX">
             <div class="card cardpw">
-                <form id="sign-in" action="/register" method="post">
+                <form id="sign-up" action="/register" method="post">
                     <div class="center">
                         <div class="title-logo background"></div>
                     </div>
@@ -72,7 +72,7 @@
 
                     <div class="section">
                         <label>Username</label>
-                        <input type="username" class="username" placeholder="Name" id="username">
+                        <input type="username" name="username" class="username" placeholder="Name" id="username" required>
                         <div class="icon userup">
                             <svg class="icon" fill="currentColor" viewBox="0 0 512 512"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -84,7 +84,7 @@
 
                     <div class="section">
                         <label>Your Email</label>
-                        <input type="email" class="mail" placeholder="example@company.com" id="mail">
+                        <input type="email" name="mail" class="mail" placeholder="example@company.com" id="mail" required>
                         <div class="icon mailup">
                             <svg class="icon" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +99,7 @@
                         <div class="section-next">
                             <label>Your Password</label>
                         </div>
-                        <input type="password" class="pw" placeholder="password" id="pw">
+                        <input type="password" name="password" class="pw" placeholder="password" id="pw" required>
 
                         <div class="icon pwup">
                             <svg class="icon" fill="currentColor" viewBox="0 0 20 20"
@@ -116,7 +116,7 @@
                         <div class="section-next">
                             <label>Repeat your password</label>
                         </div>
-                        <input type="password" class="pw-rep" placeholder="password" id="pw-rep">
+                        <input type="password" name="passwordConfirm" class="pw-rep" placeholder="password" id="pw-rep" required>
 
                         <div class="icon pwreup">
                             <svg class="icon" fill="currentColor" viewBox="0 0 512 512"

@@ -60,7 +60,7 @@ app.post('/login', (req, res)=> {
 })
 
 app.post('/register', (req, res)=> {
-    return res.redirect('/index')
+    console.log(req.body);
 })
 
 
