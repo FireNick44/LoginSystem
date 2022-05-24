@@ -36,3 +36,7 @@ or
 ```
 nodemon start server.js
 ```
+
+## How to setup MongoDB with Atlas
+
+[Go to tutorial]([https://theasciicode.com.ar/](https://www.mongodb.com/developer/quickstart/node-crud-tutorial/?_ga=2.97668826.438107056.1653379753-194282987.1653379753#setup))
