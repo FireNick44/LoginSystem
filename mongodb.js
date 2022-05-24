@@ -1,9 +1,10 @@
-const { MongoClient } = require('mongodb');
+/*
+const { MongoClient, ServerApiVersion } = require('mongodb');
 var server = require('./server', { root: __dirname});
 
-var username = "test";
-var email = "test@gugu.ch";
-var password = "test";
+var username = server.username;
+var email = server.email;
+var password = server.password;
 
 
 async function connection(){
@@ -22,7 +23,6 @@ async function connection(){
                 password: password
             }
         );
-
     } 
 
     catch (e) 
@@ -43,3 +43,4 @@ connection();
 async function writeinDatabase(client, Liste){
     await client.db("Login").collection("UsersInfo").insertOne(Liste);
 }
+*/

@@ -2,7 +2,11 @@ const express = require('express');
 const { redirect } = require('express/lib/response');
 const app = express();
 
-var mongodb = require('./mongodb', { root: __dirname}); //connection db
+var name;
+var mail;
+var password;
+var passwordConfirm;
+
 
 // listen on 8000 port (http://localhost:8000/)
 app.listen(8000);
@@ -67,10 +71,10 @@ app.post('/login', (req, res)=> {
 })
 
 app.post('/register', (req, res)=> {
-    var name = req.body.username;
-    var mail = req.body.mail;
-    var password = req.body.password;
-    var passwordConfirm = req.body.passwordConfirm
+    name = req.body.username;
+    mail = req.body.mail;
+    password = req.body.password;
+    passwordConfirm = req.body.passwordConfirm
     
     //console.log(req.body); show form input
 
@@ -86,3 +90,42 @@ app.post('/register', (req, res)=> {
 app.use((req, res) => {
     res.sendFile('/views/error.html', { root: __dirname});
 })
+
+
+//MongoDB Connection + Writing in Database
+const { MongoClient } = require('mongodb');
+
+async function connection(){
+    const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true});
+
+    try 
+    {
+        await client.connect();
+
+        await writeinDatabase(client,
+            {
+                username: name,
+                email: mail,
+                password: password
+            }
+        );
+    } 
+
+    catch (e) 
+    {
+        console.error(e);
+    } 
+
+    finally 
+    {
+        client.close();
+    }
+
+}
+
+connection();
+
+async function writeinDatabase(client, Liste){
+    await client.db("Login").collection("UsersInfo").insertOne(Liste);
+}
