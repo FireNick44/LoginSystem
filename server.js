@@ -2,7 +2,7 @@ const express = require('express');
 const { redirect } = require('express/lib/response');
 const app = express();
 
-var mongodb = require("./mongodb.js", { root: __dirname}); //connection db
+var mongodb = require('./mongodb', { root: __dirname}); //connection db
 
 
 // listen on 8000 port (http://localhost:8000/)
@@ -56,13 +56,10 @@ app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, re
 
 
 app.post('/login', (req, res)=> {
-    console.log(req.body);
+    var mail = req.body.mail;
+    var password = req.body.password;
 
-    let mail = req.body.mail;
-    let password = req.body.password;
-
-    console.log(mail);
-    console.log(password);
+    //console.log(req.body); show form input
 
     //check -> MongoDB user
 
@@ -71,7 +68,12 @@ app.post('/login', (req, res)=> {
 })
 
 app.post('/register', (req, res)=> {
-    console.log(req.body);
+    var name = req.body.username;
+    var mail = req.body.mail;
+    var password = req.body.password;
+    var passwordConfirm = req.body.passwordConfirm
+    
+    //console.log(req.body); show form input
 
     //check -> MongoDB user
 
