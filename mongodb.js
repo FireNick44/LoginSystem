@@ -43,10 +43,3 @@ connection();
 async function writeinDatabase(client, Liste){
     client.db("Login").collection("UsersInfo").insertOne(Liste);
 }
-
-    
-/*
-function createListing(client, newListing){
-    const result = client.db("Login").collection("UsersInfo").insertOne(newListing);
-}
-*/
