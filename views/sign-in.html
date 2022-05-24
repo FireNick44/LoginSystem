@@ -62,7 +62,7 @@
 
         <div class="centerX">
             <div class="card cardpw">
-                <form action="#">
+                <form id="sign-in" action="/login" method="post">
                     <div class="center">
                         <div class="title-logo background"></div>
                     </div>
@@ -72,7 +72,7 @@
                     
                     <div class="section">
                         <label>Your Email</label>
-                        <input type="email" class="mail" placeholder="example@company.com" id="mail">
+                        <input type="email" name="mail" class="mail" placeholder="example@company.com" id="mail" required>
                         <div class="mail-icon">
                             <span>
                                 <svg class="icon" fill="currentColor" viewBox="0 0 20 20"
@@ -93,7 +93,7 @@
                                 There was an idea but its also good without it :)
                             -->
                         </div>
-                        <input type="password" class="pw" placeholder="password" id="pw">
+                        <input type="password" name="password" class="pw" placeholder="password" id="pw" required>
 
                         <div class="pw-icon">
                             <span>

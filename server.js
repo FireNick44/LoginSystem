@@ -1,5 +1,9 @@
 const express = require('express');
+const { redirect } = require('express/lib/response');
 const app = express();
+
+var mongodb = require("./mongodb.js", { root: __dirname}); //connection db
+
 
 // listen on 8000 port (http://localhost:8000/)
 app.listen(8000);
@@ -10,7 +14,8 @@ app.listen(8000);
 
 //opens folder public
 app.use('/public', express.static('public'));
-
+app.use(express.json()); //this is to accept data json format
+app.use(express.urlencoded({ extended: true })) //encode data send trough html form
 
 //:root "/"
 app.get('/', (req, res) => {
@@ -48,9 +53,22 @@ app.get('/sign-up', (req, res) => {
 app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, res) => {
     res.sendFile('/views/user.html', { root: __dirname});
 })
+
+
+app.post('/login', (req, res)=> {
+    console.log(req.body);
+})
+
+app.post('/register', (req, res)=> {
+    return res.redirect('/index')
+})
+
+
 //404 page
 app.use((req, res) => {
     res.sendFile('/views/error.html', { root: __dirname});
 })
 
 
+
+//index.addEventListener("submit")
