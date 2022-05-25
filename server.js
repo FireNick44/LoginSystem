@@ -1,6 +1,9 @@
 const express = require('express');
 const { redirect } = require('express/lib/response');
 const { MongoClient } = require('mongodb');
+
+//const MongoClient = require('mongodb').MongoClient;
+
 const app = express();
 
 var name;
@@ -98,11 +101,12 @@ app.use((req, res) => {
 
 async function connection(){
     const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/?retryWrites=true&w=majority";
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true});
+    const client = new MongoClient(uri);
 
     try 
     {
         await client.connect();
+        await client.db("vscode").command({ ping: 1 });
 
         await writeinDatabase(client,
             {
