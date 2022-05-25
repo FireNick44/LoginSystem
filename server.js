@@ -1,5 +1,6 @@
 const express = require('express');
 const { redirect } = require('express/lib/response');
+const { MongoClient } = require('mongodb');
 const app = express();
 
 var name;
@@ -76,6 +77,7 @@ app.post('/register', (req, res)=> {
     password = req.body.password;
     passwordConfirm = req.body.passwordConfirm
     
+    connection();
     //console.log(req.body); show form input
 
     //check -> MongoDB user
@@ -93,7 +95,6 @@ app.use((req, res) => {
 
 
 //MongoDB Connection + Writing in Database
-const { MongoClient } = require('mongodb');
 
 async function connection(){
     const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/?retryWrites=true&w=majority";
@@ -123,8 +124,6 @@ async function connection(){
     }
 
 }
-
-connection();
 
 async function writeinDatabase(client, Liste){
     await client.db("Login").collection("UsersInfo").insertOne(Liste);
