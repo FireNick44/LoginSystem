@@ -35,10 +35,4 @@ npm install mongodb
 npm start
 ```
 
-or
-
-```
-nodemon start server.js
-```
-
 
