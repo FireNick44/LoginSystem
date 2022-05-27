@@ -28,6 +28,11 @@ Install MongoDB:
 npm install mongodb
 ```
 
+Install Bcrypt:
+
+```
+npm install bcrypt
+```
 
 ## Running the Project
 
