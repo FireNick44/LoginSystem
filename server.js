@@ -6,7 +6,7 @@ const port = 8000;
 //const mongoDB stuff
 const { redirect } = require('express/lib/response');
 const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/Login?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
 // variables for database
