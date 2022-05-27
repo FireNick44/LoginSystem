@@ -33,6 +33,11 @@ Install Bcrypt:
 ```
 npm install bcrypt
 ```
+Install Popups:
+
+```
+npm install popups
+```
 
 ## Running the Project
 
