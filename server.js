@@ -3,26 +3,23 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
-
 //const mongoDB stuff
 const { redirect } = require('express/lib/response');
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
-
+// variables for database
 var name;
 var mail;
 var password;
 var passwordConfirm;
 
-
-
 //MongoDB Connection + Writing in Database
 async function connection(){
     try 
     {
-        await client.connect();
+        await client.connect(); //versucht den client zu verbinden, await steht für das abwartet bis es verbunden ist
         await client.db("vscode").command({ ping: 1 });
 
         await writeInDatabase(client,
@@ -45,10 +42,10 @@ async function connection(){
     }
 }
 
+// stellt die verbindung zur collection 
 async function writeInDatabase(client, Liste){
     await client.db("Login").collection("UsersInfo").insertOne(Liste);
 }
-
 
 app.listen(port);                               // listen on 8000 port -> http://localhost:8000/
 app.use('/public', express.static('public'));   //opens folder public to public 
