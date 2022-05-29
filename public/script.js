@@ -77,14 +77,3 @@ function onModemenuKlickUser(){
   cards1.classList.toggle("card-light");
   cards2.classList.toggle("card-light");
 }
-
-
-document.getElementById('signUpForm').onsubmit = function (evt) { 	
-  var password = document.getElementById("pw");
-  var passwordConfirm = document.getElementById("pw-rep");
-
-  if(password.value !== passwordConfirm.value) {
-    alert("Die eingegebenen passwörter müssen übereinstimmen");
-     evt.preventDefault();
-  } 
-}

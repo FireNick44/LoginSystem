@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+const testAlerts = require('alert');
+
+
 //const mongoDB stuff
 const { redirect } = require('express/lib/response');
 const { MongoClient } = require('mongodb');
@@ -12,10 +15,11 @@ const client = new MongoClient(uri);
 const dbName = "Login"
 const collectionName = "UsersInfo"
 
+
 // variables for database
 var name;
 var mail;
-var password;
+var gpassword;
 
 testConnect();
 
@@ -132,13 +136,26 @@ app.post('/login', (req, res)=> {
 })
 
 app.post('/register', (req, res)=> {
+
     name = req.body.username;
     mail = req.body.mail;
-    password = req.body.password;
-    
-    searchInDB();
 
-    writeInDB();
+    var vpassword = req.body.password;
+    var vpasswordConfirm = req.body.passwordConfirm
+
+    if (vpasswordConfirm != vpassword) {
+        testAlerts("Passwörter stimmen nicht überein");
+        //Hier soll die Webseite neugeladen werden oder zurückspringen
+    }
+
+    else
+    {
+        vpassword = gpassword;
+        searchInDB();
+
+        writeInDB();
+    }
+
     //console.log(req.body); show form input
 
     //check -> MongoDB user
@@ -146,7 +163,9 @@ app.post('/register', (req, res)=> {
     //Hash
 
     //MongoDB
-    res.sendStatus(101)
+    
+    res.sendFile('/views/user.html', { root: __dirname});
+    //res.sendStatus(101)
 })
 
 
