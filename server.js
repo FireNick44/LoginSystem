@@ -3,49 +3,86 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+const testAlerts = require('alert');
+
+
 //const mongoDB stuff
 const { redirect } = require('express/lib/response');
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/Login?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
+const dbName = "Login"
+const collectionName = "UsersInfo"
+
+
 // variables for database
 var name;
 var mail;
-var password;
-var passwordConfirm;
+var gpassword;
 
-//MongoDB Connection + Writing in Database
-async function connection(){
-    try 
+testConnect();
+
+async function testConnect(){
+    try
     {
         await client.connect(); //versucht den client zu verbinden, await steht für das abwartet bis es verbunden ist
-        await client.db("vscode").command({ ping: 1 });
-
-        await writeInDatabase(client,
-            {
-                username: name,
-                email: mail,
-                password: password
-            }
-        );
-    } 
-
-    catch (e) 
+        await client.db(dbName).command({ ping: 1 });
+    }
+    catch (e)
     {
+        console.log("Error, connecting to MongoDB failed!")
         console.error(e);
-    } 
-
-    finally 
-    {
-        client.close();
+    }
+    finally{
+        console.log("Connection to MongoDB was successful!")
     }
 }
+
+
+
+async function writeInDB(){
+    await writeInDatabase(client,
+        {
+            username: name,
+            email: mail,
+            password: password
+        }
+    );
+
+    async function writeInDatabase(client, Liste){
+        await client.db(dbName).collection(collectionName).insertOne(Liste);
+    }
+}
+
+async function searchInDB(){
+    var checkName = await client.db(dbName).collection(collectionName).find({username: name}).toArray(function ( err, result ) {
+        console.log (err);
+        console.log (result);
+    });
+    var checkMail = await client.db(dbName).collection(collectionName).find({email: mail}).toArray();
+
+    console.log("test");
+}
+
+async function listDatabases(){
+    await client.connect();
+    let data = await client.db("Login").collection("UsersInfo").find({}).toArray();
+    
+    console.log(data);
+    client.close();
+};
+
+//listDatabases();
+
 
 // stellt die verbindung zur collection 
 async function writeInDatabase(client, Liste){
     await client.db("Login").collection("UsersInfo").insertOne(Liste);
 }
+
+
+
 
 app.listen(port);                               // listen on 8000 port -> http://localhost:8000/
 app.use('/public', express.static('public'));   //opens folder public to public 
@@ -89,21 +126,36 @@ app.post('/login', (req, res)=> {
     var mail = req.body.mail;
     var password = req.body.password;
 
+
     //console.log(req.body); show form input
-
+    
     //check -> MongoDB user
-
+    
     //MongoDB ->
-
+    
 })
 
 app.post('/register', (req, res)=> {
+
     name = req.body.username;
     mail = req.body.mail;
-    password = req.body.password;
-    passwordConfirm = req.body.passwordConfirm
-    
-    connection();
+
+    var vpassword = req.body.password;
+    var vpasswordConfirm = req.body.passwordConfirm
+
+    if (vpasswordConfirm != vpassword) {
+        testAlerts("Passwörter stimmen nicht überein");
+        //Hier soll die Webseite neugeladen werden oder zurückspringen
+    }
+
+    else
+    {
+        vpassword = gpassword;
+        searchInDB();
+
+        writeInDB();
+    }
+
     //console.log(req.body); show form input
 
     //check -> MongoDB user
@@ -111,7 +163,9 @@ app.post('/register', (req, res)=> {
     //Hash
 
     //MongoDB
-    res.sendStatus(101)
+    
+    res.sendFile('/views/user.html', { root: __dirname});
+    //res.sendStatus(101)
 })
 
 
