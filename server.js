@@ -21,24 +21,25 @@ var name;
 var mail;
 var gpassword;
 
+
+let isDBConnected = false;
 testConnect();
+if(isDBConnected) console.log("Connection to MongoDB was successful!");
 
 async function testConnect(){
     try
     {
         await client.connect(); //versucht den client zu verbinden, await steht für das abwartet bis es verbunden ist
         await client.db(dbName).command({ ping: 1 });
+        isDBConnected = true;
     }
     catch (e)
     {
         console.log("Error, connecting to MongoDB failed!")
         console.error(e);
-    }
-    finally{
-        console.log("Connection to MongoDB was successful!")
+        isDBConnected = false;
     }
 }
-
 
 
 async function writeInDB(){
@@ -46,7 +47,7 @@ async function writeInDB(){
         {
             username: name,
             email: mail,
-            password: password
+            password: gpassword
         }
     );
 
@@ -165,7 +166,7 @@ app.post('/register', (req, res)=> {
     //MongoDB
     
     res.sendFile('/views/user.html', { root: __dirname});
-    //res.sendStatus(101)
+    
 })
 
 
