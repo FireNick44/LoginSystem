@@ -30,9 +30,6 @@ async function testConnect(){
         console.log("Error, connecting to MongoDB failed!")
         console.error(e);
     }
-    finally{
-        console.log("Connection to MongoDB was successful!")
-    }
 }
 
 async function writeInDB(){
