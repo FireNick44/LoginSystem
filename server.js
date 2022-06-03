@@ -2,19 +2,15 @@
 const express = require('express');
 const app = express();
 const port = 8000;
-
 const testAlerts = require('alert');
-
 
 //const mongoDB stuff
 const { redirect } = require('express/lib/response');
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/Login?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
-
 const dbName = "Login"
 const collectionName = "UsersInfo"
-
 
 // variables for database
 var name;
@@ -57,7 +53,7 @@ async function writeInDB(){
 }
 
 async function searchInDB(){
-    var checkName = await client.db(dbName).collection(collectionName).find({username: name}).toArray(function ( err, result ) {
+    await client.db(dbName).collection(collectionName).find({username: name}).toArray(function ( err, result ) {
         console.log (err);
         console.log (result);
     });
@@ -66,29 +62,16 @@ async function searchInDB(){
     console.log("test");
 }
 
-async function listDatabases(){
-    await client.connect();
-    let data = await client.db("Login").collection("UsersInfo").find({}).toArray();
-    
-    console.log(data);
-    client.close();
-};
-
-//listDatabases();
-
 
 // stellt die verbindung zur collection 
 async function writeInDatabase(client, Liste){
     await client.db("Login").collection("UsersInfo").insertOne(Liste);
 }
 
-
-
-
-app.listen(port);                               // listen on 8000 port -> http://localhost:8000/
-app.use('/public', express.static('public'));   //opens folder public to public 
-app.use(express.json());                        //to accept data json format
-app.use(express.urlencoded({ extended: true })) //encode data send trough html form
+app.listen(port);                                   // listen on 8000 port -> http://localhost:8000/
+app.use('/public', express.static('public'));       //opens folder public to public 
+app.use(express.json());                            //to accept data json format
+app.use(express.urlencoded({ extended: true }))     //encode data send trough html form
 
 //:root "/" -> index
 app.get('/', (req, res) => {
@@ -122,18 +105,9 @@ app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, re
     res.sendFile('/views/user.html', { root: __dirname});
 })
 
-
 app.post('/login', (req, res)=> {
     var mail = req.body.mail;
     var password = req.body.password;
-
-
-    //console.log(req.body); show form input
-    
-    //check -> MongoDB user
-    
-    //MongoDB ->
-    
 })
 
 app.post('/register', (req, res)=> {
@@ -153,17 +127,10 @@ app.post('/register', (req, res)=> {
     {
         vpassword = gpassword;
         searchInDB();
-
         writeInDB();
     }
 
-    //console.log(req.body); show form input
-
-    //check -> MongoDB user
-
     //Hash
-
-    //MongoDB
     
     res.sendFile('/views/user.html', { root: __dirname});
     
