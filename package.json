@@ -9,10 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "alert": "^5.0.11",
     "express": "^4.18.1",
     "mongodb": "^4.6.0",
-    "mustache": "^4.2.0"
+    "nunjucks": "^3.2.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
