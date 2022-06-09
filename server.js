@@ -8,7 +8,6 @@ app.use('/public', express.static('public'));       //opens folder public to pub
 app.use(express.json());                            //to accept data json format
 app.use(express.urlencoded({ extended: true }))     //encode data send trough html form
 
-
 // mongoDB
 const { redirect } = require('express/lib/response');
 const { MongoClient } = require('mongodb');
@@ -90,8 +89,6 @@ async function writeInDatabase(client, Liste){
 
 
 
-
-
 //:root "/" -> index
 app.get('/', (req, res) => {
     res.sendFile('/views/index.html', { root: __dirname});
@@ -129,7 +126,7 @@ app.post('/login', (req, res)=> {
     var password = req.body.password;
 });
 
-app.post('/register', (req, res)=> {
+app.post('/register', async (req, res)=> {
     let vpassword = req.body.password;
     let vpasswordConfirm = req.body.passwordConfirm;
 
@@ -139,7 +136,7 @@ app.post('/register', (req, res)=> {
         mail = req.body.mail;
         gpassword = vpassword;
 
-        let searchConfirm = searchInDB();
+        var searchConfirm = await searchInDB();
         
         console.log("autenth:")
         console.log(searchConfirm);
