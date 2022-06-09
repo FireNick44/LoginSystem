@@ -16,43 +16,27 @@ const client = new MongoClient(uri);
 const dbName = "Login"
 const collectionName = "UsersInfo"
 
+var name;
+var mail;
+var gpassword;
+
+client.connect() // test connection
+.then((result) => console.log('connected to db'))
+.catch((err) => console.log(err))
+
 // nunjucks
 const nunjucks = require('nunjucks');
+
+const errorPW = { error: 'Passwords not matching!' };
+const errorAlreadyInUse = { error: "Mail is already in use!" };
+const errorNoUserFound = { error: "No User found" };
 
 nunjucks.configure('templates', {
     autoescape: true,
     express: app
 });
 
-
-// variables
-// db
-var name;
-var mail;
-var gpassword;
-// templates
-const errorPW = { error: 'Passwords not matching!' };
-const errorAlreadyInUse = { error: "Mail or Username is already in use!" };
-
-let isDBConnected = false;
-testConnect();
-if(isDBConnected) console.log("Connection to MongoDB was successful!");
-
-async function testConnect(){
-    try
-    {
-        await client.connect(); //versucht den client zu verbinden, await steht für das abwartet bis es verbunden ist
-        await client.db(dbName).command({ ping: 1 });
-        isDBConnected = true;
-    }
-    catch (e)
-    {
-        console.log("Error, connecting to MongoDB failed!")
-        console.error(e);
-        isDBConnected = false;
-    }
-}
-
+//////////////////////////
 
 async function writeInDB(){
     await writeInDatabase(client,
@@ -66,19 +50,6 @@ async function writeInDB(){
     async function writeInDatabase(client, Liste){
         await client.db(dbName).collection(collectionName).insertOne(Liste);
     }
-}
-
-async function searchInDB(){
-    let searchInDB_Error = 0;
-    await client.db(dbName).collection(collectionName).find({username: name, email: mail}).toArray(function ( err, result ) {
-        //console.log (err);
-        //console.log (result);
-        searchInDB_Error = result?.length || 0;
-    });
-
-    console.log("searchinDB:");
-    console.log(searchInDB_Error);
-    return searchInDB_Error;
 }
 
 
@@ -121,31 +92,68 @@ app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, re
     res.sendFile('/views/user.html', { root: __dirname});
 });
 
-app.post('/login', (req, res)=> {
-    var mail = req.body.mail;
-    var password = req.body.password;
+app.post('/login', async (req, res)=> {
+    mail = req.body.mail;
+    gpassword = req.body.password;
+
+    //Hash von gpassword !
+
+    await client.db(dbName).collection(collectionName).findOne({email: mail, password: gpassword}).toArray(function ( err, result ) {
+            
+        searchConfirm = result;
+        
+        //console.log (err);
+        //console.log (result);
+        //console.log(searchConfirm);
+
+        if(searchConfirm.length != 0){
+            console.log('status sign up: error, mail already in use!');
+            res.render('error.html', errorNoUserFound);
+        }
+        else if(searchConfirm.length == 0){
+            console.log('status sign in: created user ;)');
+
+            const sendUser = { username: "Wird noch gesucht dies das..." };
+            //...
+            
+            res.render('user.html', sendUser);
+        }
+    });
+
 });
 
 app.post('/register', async (req, res)=> {
     let vpassword = req.body.password;
     let vpasswordConfirm = req.body.passwordConfirm;
 
+    //Hash von password !
+
     if (vpasswordConfirm != vpassword) res.render('error.html', errorPW);
     else {
+
         name = req.body.username;
         mail = req.body.mail;
         gpassword = vpassword;
 
-        var searchConfirm = await searchInDB();
-        
-        console.log("autenth:")
-        console.log(searchConfirm);
+        await client.db(dbName).collection(collectionName).find({email: mail}).toArray(function ( err, result ) {
+            
+            searchConfirm = result;
+            
+            //console.log (err);
+            //console.log (result);
+            //console.log(searchConfirm);
 
-        if(searchConfirm != 0) res.render('error.html', errorAlreadyInUse);
-        else if(searchConfirm == 0){
-            writeInDB();
-            res.sendFile('/views/sign-in.html', { root: __dirname});
-        }
+            if(searchConfirm.length != 0){
+                console.log('status sign up: error, mail already in use!');
+                res.render('error.html', errorAlreadyInUse);
+            }
+            else if(searchConfirm.length == 0){
+                console.log('status sign up: created user ;)');
+
+                writeInDB();
+                res.sendFile('/views/sign-in.html', { root: __dirname});
+            }
+        });
     }
 });
 
@@ -154,5 +162,4 @@ app.post('/register', async (req, res)=> {
 app.use((req, res) => {
     res.sendFile('/views/error.html', { root: __dirname});
 });
-
 
