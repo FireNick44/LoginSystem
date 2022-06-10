@@ -97,7 +97,6 @@ app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, re
 app.post('/login', async (req, res)=> {
     mail = req.body.mail;
     let vpassword = req.body.password;
-
     //Hash von gpassword !
 
     await client.db(dbName).collection(collectionName).findOne({email: mail},{password: vpassword}).then(( result, err ) => {
@@ -115,13 +114,13 @@ app.post('/login', async (req, res)=> {
             //console.log("pass");
             //console.log(searchConfirm.password);
 
-            let passwordChecker123 = searchConfirm.password;
+            let userCollecterASP = searchConfirm.password;
     
-            if(passwordChecker123 != vpassword){
+            if(userCollecterASP != vpassword){
                 console.log('status sign in: wrong password');
                 res.render('error.html', errorWrongPW);
             }
-            else if(passwordChecker123.length != 0){
+            else if(userCollecterASP.length != 0){
                 console.log('status sign in: user logged in! ;)');
     
                 let userDotUsername =  searchConfirm.username;
