@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))     //encode data send trough ht
 // mongoDB
 const { redirect } = require('express/lib/response');
 const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/Login?retryWrites=true&w=majority";
+const uri = "mongodb+srv://vscode:sml12345@ipt6.lovhm.mongodb.net/Login?retryWrites=true&w=majority&tlsInsecure=true";
 const client = new MongoClient(uri);
 const dbName = "Login"
 const collectionName = "UsersInfo"
@@ -22,12 +22,13 @@ var gpassword;
 
 client.connect() // test connection
 .then((result) => console.log('connected to db'))
-.catch((err) => console.log(err))
+.catch((err) => console.log(err));
 
 // nunjucks
 const nunjucks = require('nunjucks');
 
 const errorPW = { error: 'Passwords not matching!' };
+const errorWrongPW = { error: "Wrong password!" };
 const errorAlreadyInUse = { error: "Mail is already in use!" };
 const errorNoUserFound = { error: "No User found" };
 
@@ -71,6 +72,7 @@ app.get('/index', (req, res) => {
     res.sendFile('/views/index.html', { root: __dirname});
 });
 
+
 //sign-in
 app.get('/sign-in.html', (req, res) => {
     res.sendFile('/views/sign-in.html', { root: __dirname});
@@ -94,29 +96,40 @@ app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, re
 
 app.post('/login', async (req, res)=> {
     mail = req.body.mail;
-    gpassword = req.body.password;
+    let vpassword = req.body.password;
 
     //Hash von gpassword !
 
-    await client.db(dbName).collection(collectionName).findOne({email: mail, password: gpassword}).toArray(function ( err, result ) {
-            
-        searchConfirm = result;
+    await client.db(dbName).collection(collectionName).findOne({email: mail},{password: vpassword}).then(( result, err ) => {
         
-        //console.log (err);
-        //console.log (result);
-        //console.log(searchConfirm);
+        let searchConfirm = result;
 
-        if(searchConfirm.length != 0){
-            console.log('status sign up: error, mail already in use!');
+        if(searchConfirm == null){
+            console.log('status sign in: error');
             res.render('error.html', errorNoUserFound);
         }
-        else if(searchConfirm.length == 0){
-            console.log('status sign in: created user ;)');
+        else{
+            //console.log("err");
+            //console.log (err);
+            //console.log(searchConfirm);
+            //console.log("pass");
+            //console.log(searchConfirm.password);
 
-            const sendUser = { username: "Wird noch gesucht dies das..." };
-            //...
-            
-            res.render('user.html', sendUser);
+            let passwordChecker123 = searchConfirm.password;
+    
+            if(passwordChecker123 != vpassword){
+                console.log('status sign in: wrong password');
+                res.render('error.html', errorWrongPW);
+            }
+            else if(passwordChecker123.length != 0){
+                console.log('status sign in: user logged in! ;)');
+    
+                let userDotUsername =  searchConfirm.username;
+                //console.log(userDotUsername);
+                const sendUser = { username: userDotUsername};
+                
+                res.render('user.html', sendUser);
+            }
         }
     });
 
@@ -137,7 +150,7 @@ app.post('/register', async (req, res)=> {
 
         await client.db(dbName).collection(collectionName).find({email: mail}).toArray(function ( err, result ) {
             
-            searchConfirm = result;
+            let searchConfirm = result;
             
             //console.log (err);
             //console.log (result);
