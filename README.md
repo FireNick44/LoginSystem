@@ -33,10 +33,10 @@ Install Bcrypt:
 ```
 npm install bcrypt
 ```
-Install Alerts:
+Install Nunjucks:
 
 ```
-npm install alert
+npm install nunjucks
 ```
 
 ## Running the Project
