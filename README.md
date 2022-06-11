@@ -6,40 +6,28 @@ Complete LoginSystem with the UI from LoginFrontend
 
 [Go to tutorial](https://www.mongodb.com/developer/quickstart/node-crud-tutorial/?_ga=2.97668826.438107056.1653379753-194282987.1653379753#setup)
 
-## Installation &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+## Installation
 
-Clone or download the project, open the project in visual studio code and start a new terminal. Due to storage and privacy reasons there are no node-modules. Therefore, you need to install the following modules manually:
+Clone or download the project, open the project in visual studio code and start a new terminal. Due to storage and privacy reasons there is no node-modules folder. Therefore, you need to install the following modules manually.
 
-Install Nodemon: _( life server refresh, -g is for a global installation --save is for a local installation )_
+### Dependencies:
 
-```
-npm install -g nodemon
-```
+ - nodemon
+ - express
+ - mongodb
+ - nunjucks
 
-Install Express:
+// nodemon is optinal _(automatically updates the server when code is changed)_
 
-```
-npm install express
-```
+### How to Install
 
-Install MongoDB:
-
-```
-npm install mongodb
-```
-
-Install Bcrypt:
+Install: _(paste the following code to a bash or git terminal)_
 
 ```
-npm install bcrypt
-```
-Install Nunjucks:
-
-```
-npm install nunjucks
+npm install nodemon express mongodb nunjucks
 ```
 
-## Running the Project
+### Running the Project
 
 ```
 npm start
