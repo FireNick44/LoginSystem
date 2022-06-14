@@ -83,7 +83,7 @@ document.getElementById('signUpForm').onsubmit = function (evt) {
   var passwordConfirm = document.getElementById("pw-rep");
 
   if(password.value !== passwordConfirm.value) {
-    alert("Die eingegebenen passwörter müssen übereinstimmen");
+    alert("Die eingegebenen Passwörter müssen übereinstimmen");
      evt.preventDefault();
   } 
 }
