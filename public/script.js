@@ -52,11 +52,11 @@ function onModemenuKlick(){
   cards1.classList.toggle("card-light");
 
   if(cards2 == null){
-    lnk.classList.toggle("lnk-light"); //null bei user
-    lnk1.classList.toggle("lnk-light"); //null bei user
+    lnk.classList.toggle("lnk-light");
+    lnk1.classList.toggle("lnk-light");
     cards.classList.toggle("card-light");
-    mail.classList.toggle("mail-light"); //null bei user
-    pw.classList.toggle("pw-light"); //null bei user
+    mail.classList.toggle("mail-light");
+    pw.classList.toggle("pw-light");
   }
 
   if(username != null){
@@ -76,14 +76,4 @@ function onModemenuKlickUser(){
   bg.classList.toggle("background-light");
   cards1.classList.toggle("card-light");
   cards2.classList.toggle("card-light");
-}
-
-document.getElementById('signUpForm').onsubmit = function (evt) { 	
-  var password = document.getElementById("pw");
-  var passwordConfirm = document.getElementById("pw-rep");
-
-  if(password.value !== passwordConfirm.value) {
-    alert("Die eingegebenen passwörter müssen übereinstimmen");
-     evt.preventDefault();
-  } 
 }

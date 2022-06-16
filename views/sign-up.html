@@ -141,6 +141,21 @@
         </div>
     </main>
     <script src="./../public/script.js" charset="utf-8"></script>
+    <script>
+
+        document.getElementById('signUpForm').onsubmit = function (evt) {
+          var password = document.getElementById("pw");
+          var passwordConfirm = document.getElementById("pw-rep");
+
+          if(passwordConfirm != null){
+            if(password.value !== passwordConfirm.value) {
+              alert("Die eingegebenen passwörter müssen übereinstimmen");
+               evt.preventDefault();
+            }
+          }
+        }
+
+    </script>
 </body>
 
 </html>

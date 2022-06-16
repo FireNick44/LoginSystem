@@ -62,7 +62,8 @@ nunjucks.configure('templates', {
 const { createHash } = require('crypto');
 
 function hash(input){
-    return createHash('sha256').update(input).digest('base64');
+    var createdHash =  createHash('sha256').update('input').digest('base64');
+    return createdHash * input;
 }
 
 
@@ -100,13 +101,14 @@ app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, re
 });
 
 //login
-app.post('/login', async (req, res)=> {
+app.post('/login', (req, res)=> {
     let vpassword = req.body.password;
     mail = req.body.mail;
 
     vpassword = hash(vpassword);
 
-    await client.db(dbName).collection(collectionName).findOne({email: mail},{password: vpassword}).then(( result, err ) => {
+    await client.db(dbName).collection(collectionName).findOne({email: mail},{password: vpassword})
+    .then(( result, err ) => {
         
         let searchConfirm = result;
 
@@ -144,20 +146,21 @@ app.post('/login', async (req, res)=> {
 });
 
 //register
-app.post('/register', async (req, res)=> {
+app.post('/register', (req, res)=> {
     let vpassword = req.body.password;
     let vpasswordConfirm = req.body.passwordConfirm;
 
     if (vpasswordConfirm != vpassword) res.render('error.html', errorPW);
     else {
 
-        vpassword = hash(vpassword);
+        vpassword = hash();
 
         name = req.body.username;
         mail = req.body.mail;
         gpassword = vpassword;
 
-        await client.db(dbName).collection(collectionName).find({email: mail}).toArray(function ( err, result ) {
+        await client.db(dbName).collection(collectionName)
+        .find({email: mail}).toArray(function ( err, result ) {
             
             //console.log(result);
             //console.log(searchConfirm);
