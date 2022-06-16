@@ -150,7 +150,7 @@ app.post('/register', (req, res)=> {
     let vpassword = req.body.password;
     let vpasswordConfirm = req.body.passwordConfirm;
 
-    if (vpasswordConfirm == vpassword) res.render('error.html', errorPW);
+    if (vpasswordConfirm != vpassword) res.render('error.html', errorPW);
     else {
 
         vpassword = hash(vpassword);
