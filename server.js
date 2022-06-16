@@ -62,8 +62,8 @@ nunjucks.configure('templates', {
 const { createHash } = require('crypto');
 
 function hash(input){
-    var createdHash =  createHash('sha256').update('input').digest('base64');
-    return createdHash * input;
+    input =  createHash('sha256').update('input').digest('base64');
+    return input;
 }
 
 
@@ -153,7 +153,7 @@ app.post('/register', (req, res)=> {
     if (vpasswordConfirm != vpassword) res.render('error.html', errorPW);
     else {
 
-        vpassword = hash();
+        vpassword = hash(vpassword);
 
         name = req.body.username;
         mail = req.body.mail;
