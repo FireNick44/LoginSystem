@@ -33,4 +33,7 @@ npm install nodemon express mongodb nunjucks
 npm start
 ```
 
-
+### Open page on 8000 port
+```
+http://localhost:8000/
+```
