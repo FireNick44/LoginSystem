@@ -62,8 +62,7 @@ nunjucks.configure('templates', {
 const { createHash } = require('crypto');
 
 function hash(input){
-    input =  createHash('sha256').update('input').digest('base64');
-    return input;
+    return createHash('sha256').update(input).digest('base64');
 }
 
 
@@ -101,7 +100,7 @@ app.get('/21246%3D581919%2Ct19263%3D340058%7C358054%2Ct16667%3D565315', (req, re
 });
 
 //login
-app.post('/login', (req, res)=> {
+app.post('/login', async (req, res)=> {
     let vpassword = req.body.password;
     mail = req.body.mail;
 
@@ -146,7 +145,7 @@ app.post('/login', (req, res)=> {
 });
 
 //register
-app.post('/register', (req, res)=> {
+app.post('/register', async (req, res)=> {
     let vpassword = req.body.password;
     let vpasswordConfirm = req.body.passwordConfirm;
 
