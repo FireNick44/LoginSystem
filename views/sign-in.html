@@ -28,16 +28,16 @@
 
         <nav class="navigation">
             <div>
-                <a href="sign-in" class="navlink lnk1">Sign In</a>
-                <a href="sign-up" class="navlink lnk2">Sign Up</a>
+                <a href="sign-in" class="navlink link1">Sign In</a>
+                <a href="sign-up" class="navlink link2">Sign Up</a>
             </div>
             <div>
-                <div class="card cardmode open" onclick="themeMenu()">
-                    <div class="mode-body">
+                <div class="card modeCard open" onclick="themeMenu()">
+                    <div class="modeBody">
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="mode-icon">
+                            class="iconMode">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -51,7 +51,7 @@
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="mode-icon">
+                            class="iconMode">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
 
@@ -61,10 +61,10 @@
         </nav>
 
         <div class="centerX">
-            <div class="card cardpw">
+            <div class="card passwordCard">
                 <form id="signInForm" action="/login" method="post">
                     <div class="center">
-                        <div class="title-logo background"></div>
+                        <div class="titleLogo background"></div>
                     </div>
                     <div class="center">
                         <h1 class="title">Sign In</h1>
@@ -73,7 +73,7 @@
                     <div class="section">
                         <label>Your Email</label>
                         <input type="email" name="mail" class="mail" placeholder="example@company.com" id="mail" required>
-                        <div class="mail-icon">
+                        <div class="iconMail">
                             <span>
                                 <svg class="icon" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="section">
-                        <div class="section-next">
+                        <div class="sectionNext">
                             <label>Your Password</label>
                             <!--
                                 <a href="#" class="link">Forgot password?</a> 
@@ -95,7 +95,7 @@
                         </div>
                         <input type="password" name="password" class="pw" placeholder="password" id="pw" required>
 
-                        <div class="pw-icon">
+                        <div class="iconPw">
                             <span>
                                 <svg class="icon" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -114,7 +114,7 @@
 
                 </form>
 
-                <div class="section-next">
+                <div class="sectionNext">
                     <label>Not registered?</label>
                     <a href="sign-up" class="link">Create account</a>
                 </div>

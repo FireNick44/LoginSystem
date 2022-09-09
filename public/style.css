@@ -19,7 +19,7 @@ body {
     transition: ease-out 200ms;
 }
 
-.body-light{
+.bodyLight{
     color: black !important;
     transition: ease-out 200ms;
 }
@@ -113,7 +113,7 @@ a:active{
     transition: ease-out 200ms;
 }
 
-.background-light{
+.backgroundLight{
     background: linear-gradient(235deg, #FFFFFF 0%, #000F25 100%),
         linear-gradient(180deg, #9f79db 0%, #252525 100%),
         linear-gradient(235deg, #a3e2ff 0%, #a3b8ff 40%, #283099 calc(40% + 1px), #407daf 60%, #4cacbb calc(60% + 1px), #6fa3ac 70%, #3aa0cf calc(70% + 1px), #33c9b7 100%),
@@ -140,7 +140,7 @@ a:active{
     align-items: center;
 }
 
-.spacebtw{
+.spaceBetween{
     display: flex;
     justify-content: space-between;
 }
@@ -170,7 +170,7 @@ a:active{
 }
 
 
-.card.cardpw{
+.card.passwordCard{
     width: 380px;
     padding: 40px 16px 40px 16px;
 }
@@ -179,14 +179,14 @@ a:active{
     width: 400px;
     height: 350px;
 }
-.card.usercard{
+.card.userCard{
     padding: 25px;
     max-width: 1600px;
     height: calc(90% - 30px);
     width: calc(90% - 30px);
 }
 
-.card.cardmode{
+.card.modeCard{
     width: 4rem;
     height: 4rem;
     overflow: hidden;
@@ -195,7 +195,7 @@ a:active{
     cursor: pointer;
 }
 
-.card-light {
+.cardLight {
     backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(255, 255, 255, 0.555);
     border-radius: 12px;
@@ -259,7 +259,7 @@ input:focus {
 
 .username,
 .mail,
-.pw-rep,
+.pwConfirm,
 .pw {
     appearance: none;
     background-clip: padding-box;
@@ -277,10 +277,10 @@ input:focus {
     transition: ease-out 100ms;
 }
 
-.username-light,
-.mail-light,
-.pw-rep-light,
-.pw-light {
+.usernameLight,
+.mailLight,
+.pwConfirmLight,
+.pwLight {
     background-color: white !important;
     color: black !important;
     transition: ease-out 100ms;
@@ -293,12 +293,6 @@ input:focus {
     right: 0px;
 }
 
-.iconup{
-    position: absolute;
-    height: 28px;
-    width: 28px;
-}
-
 .icon.mail{
     top: 239px;
 }
@@ -307,27 +301,27 @@ input:focus {
     top: 325px;
 }
 
-.icon.userup{
+.icon.userUp{
     top: 238px;
     right: 20px;
 }
 
-.icon.mailup{
+.icon.mailUp{
     top: 325px;
     right: 20px;
 }
 
-.icon.pwup{
+.icon.pwUp{
     top: 410px;
     right: 20px;
 }
 
-.icon.pwreup{
+.icon.pwConfirmUp{
     top: 496px;
     right: 20px;
 }
 
-.mail-icon {
+.iconMail {
     position: absolute;
     height: 28px;
     width: 28px;
@@ -335,7 +329,7 @@ input:focus {
     top: 239px;
 }
 
-.pw-icon {
+.iconPw {
     position: absolute;
     height: 28px;
     width: 28px;
@@ -358,7 +352,7 @@ input:focus {
     transition: ease-out 300ms;
 }
 
-.title-logo {
+.titleLogo {
     height: 80px;
     width: 80px;
     border-radius: 80px;
@@ -376,7 +370,7 @@ label {
     margin-top: 25px;
 }
 
-.section-next {
+.sectionNext {
     display: flex;
     justify-content: space-between;
     margin-right: 5px;
@@ -400,19 +394,19 @@ label {
     transition: ease-out 300ms;
 }
 
-.navlink.lnk1{
+.navlink.link1{
     color: white;
 }
 
-.navlink.lnk2{
+.navlink.link2{
     color: white;
 }
 
-.navlink.lnk-light{
+.navlink.linkLight{
     color: black !important;
 }
 
-.mode-body{
+.modeBody{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -423,12 +417,12 @@ label {
     transition: all 320ms ease-out 50ms;
 }
 
-.mode-icon{
+.iconMode{
     display: block;
     width: 3.2rem;
     margin: 0.4rem;
 }
 
-.open .mode-body{
+.open .modeBody{
     transform: translateY(-32px);
 }

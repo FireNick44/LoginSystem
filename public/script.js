@@ -30,41 +30,41 @@ async function sessionLoadPage() {
 
 //Darkmode & Lightmode
 var body = document.body;
-var modemenu = document.querySelector(".cardmode");
+var modemenu = document.querySelector(".modeCard");
 var bg = document.querySelector(".background");
-var lnk = document.querySelector(".navlink.lnk1");
-var lnk1 = document.querySelector(".navlink.lnk2");
-var cards = document.querySelector(".card.cardpw");
-var cards1 = document.querySelector(".card.cardmode");
-var cards2 = document.querySelector(".card.usercard");
+var lnk = document.querySelector(".navlink.link1");
+var link1 = document.querySelector(".navlink.link2");
+var cards = document.querySelector(".card.passwordCard");
+var cards1 = document.querySelector(".card.modeCard");
+var cards2 = document.querySelector(".card.userCard");
 var username = document.querySelector(".username");
 var mail = document.querySelector(".mail");
 var pw = document.querySelector(".pw");
-var pwrep = document.querySelector(".pw-rep");
+var pwrep = document.querySelector(".pwConfirm");
 
 function themeMenu(){
   if(modemenu.classList.contains("open")) sessionStorage.setItem("pageHasLightmode", true); //lightmode
   else if(!modemenu.classList.contains("open")) sessionStorage.removeItem("pageHasLightmode") //Darkmode
   
   modemenu.classList.toggle("open");
-  body.classList.toggle("body-light");
-  bg.classList.toggle("background-light");
-  cards1.classList.toggle("card-light");
+  body.classList.toggle("bodyLight");
+  bg.classList.toggle("backgroundLight");
+  cards1.classList.toggle("cardLight");
 
   if(cards2 == null){
-    lnk.classList.toggle("lnk-light");
-    lnk1.classList.toggle("lnk-light");
-    cards.classList.toggle("card-light");
-    mail.classList.toggle("mail-light");
-    pw.classList.toggle("pw-light");
+    lnk.classList.toggle("linkLight");
+    link1.classList.toggle("linkLight");
+    cards.classList.toggle("cardLight");
+    mail.classList.toggle("mailLight");
+    pw.classList.toggle("pwLight");
   }
 
   if(username != null){
-    username.classList.toggle("username-light");
-    pwrep.classList.toggle("pw-rep-light");
+    username.classList.toggle("usernameLight");
+    pwrep.classList.toggle("pwConfirmLight");
   }
 
-  if(cards2 != null) cards2.classList.toggle("card-light"); //null bei nicht user
+  if(cards2 != null) cards2.classList.toggle("cardLight"); //null bei nicht user
 }
 
 function themeMenuUser(){
@@ -72,8 +72,8 @@ function themeMenuUser(){
   else if(!modemenu.classList.contains("open")) sessionStorage.removeItem("pageHasLightmode") //Darkmode
   
   modemenu.classList.toggle("open");
-  body.classList.toggle("body-light");
-  bg.classList.toggle("background-light");
-  cards1.classList.toggle("card-light");
-  cards2.classList.toggle("card-light");
+  body.classList.toggle("bodyLight");
+  bg.classList.toggle("backgroundLight");
+  cards1.classList.toggle("cardLight");
+  cards2.classList.toggle("cardLight");
 }
