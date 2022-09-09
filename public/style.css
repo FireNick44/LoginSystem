@@ -318,12 +318,12 @@ input:focus {
 }
 
 .icon.pwup{
-    top: 413px;
+    top: 410px;
     right: 20px;
 }
 
 .icon.pwreup{
-    top: 499px;
+    top: 496px;
     right: 20px;
 }
 
@@ -350,10 +350,12 @@ input:focus {
     margin: 15px 0px 5px 0px;
     padding-bottom: 10px;
     border-bottom: 1px solid #474747;
+    transition: ease-out 300ms;
 }
 
 .title.user{
     justify-content: flex-start;
+    transition: ease-out 300ms;
 }
 
 .title-logo {
@@ -430,5 +432,3 @@ label {
 .open .mode-body{
     transform: translateY(-32px);
 }
-
-

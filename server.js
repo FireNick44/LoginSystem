@@ -5,9 +5,9 @@ const app = express();
 const port = 8000;
 
 app.listen(port);                                   // listen on 8000 port -> http://localhost:8000/
-app.use('/public', express.static('public'));       //opens folder public to public
-app.use(express.json());                            //to accept data json format
-app.use(express.urlencoded({ extended: true }))     //encode data send trough html form
+app.use('/public', express.static('public'));       // opens folder public to public
+app.use(express.json());                            // to accept data json format
+app.use(express.urlencoded({ extended: true }))     // encode data send trough html form
 
 
 // mongoDB
@@ -23,7 +23,9 @@ var name;
 var mail;
 var gpassword;
 
-client.connect() // test connection
+
+ // test connection
+client.connect()
 .then((result) => console.log('connected to db'))
 .catch((err) => console.log(err));
 

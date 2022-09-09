@@ -10,7 +10,7 @@ function Sleep(milliseconds) {
 
 //PageLoader
 async function sessionLoadPage() {
-  if(sessionStorage.getItem("pageHasLightmode", true)) onModemenuKlick(); //looking for lightmode
+  if(sessionStorage.getItem("pageHasLightmode", true)) themeMenu(); //looking for lightmode
 
   if(!sessionStorage.getItem("pageWasLoaded")) {
       loader.classList.add("appear");
@@ -42,7 +42,7 @@ var mail = document.querySelector(".mail");
 var pw = document.querySelector(".pw");
 var pwrep = document.querySelector(".pw-rep");
 
-function onModemenuKlick(){
+function themeMenu(){
   if(modemenu.classList.contains("open")) sessionStorage.setItem("pageHasLightmode", true); //lightmode
   else if(!modemenu.classList.contains("open")) sessionStorage.removeItem("pageHasLightmode") //Darkmode
   
@@ -67,7 +67,7 @@ function onModemenuKlick(){
   if(cards2 != null) cards2.classList.toggle("card-light"); //null bei nicht user
 }
 
-function onModemenuKlickUser(){
+function themeMenuUser(){
   if(modemenu.classList.contains("open")) sessionStorage.setItem("pageHasLightmode", true); //lightmode
   else if(!modemenu.classList.contains("open")) sessionStorage.removeItem("pageHasLightmode") //Darkmode
   
